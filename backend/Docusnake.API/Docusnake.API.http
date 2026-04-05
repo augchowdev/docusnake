@@ -1,0 +1,46 @@
+@baseUrl = https://localhost:5001
+
+### Register a new user
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Get all documents (requires Bearer token)
+GET {{baseUrl}}/api/documents
+Authorization: Bearer <token>
+
+### Create a document
+POST {{baseUrl}}/api/documents
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "My Invoice",
+  "extractedText": "Invoice #INV-001 Total: $500.00"
+}
+
+### Get all folders
+GET {{baseUrl}}/api/folders
+Authorization: Bearer <token>
+
+### Export to Excel
+GET {{baseUrl}}/api/export/excel
+Authorization: Bearer <token>
+
+### Export to CSV
+GET {{baseUrl}}/api/export/csv
+Authorization: Bearer <token>
