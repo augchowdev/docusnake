@@ -1,0 +1,6 @@
+@Docusnake.API_HostAddress = http://localhost:5042
+
+GET {{Docusnake.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

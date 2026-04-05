@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Docusnake.API/Docusnake.API.csproj" />
+  <Project Path="Docusnake.Tests/Docusnake.Tests.csproj" />
+</Solution>
