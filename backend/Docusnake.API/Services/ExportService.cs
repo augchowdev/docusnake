@@ -15,6 +15,7 @@ public interface IExportService
 
 public class ExportService : IExportService
 {
+    private const string DateFormat = "yyyy-MM-dd HH:mm:ss";
     private readonly AppDbContext _context;
 
     public ExportService(AppDbContext context)
@@ -78,8 +79,8 @@ public class ExportService : IExportService
             worksheet.Cell(row, 4).Value = doc.ExtractedText ?? "";
             worksheet.Cell(row, 5).Value = doc.ExtractedData ?? "";
             worksheet.Cell(row, 6).Value = doc.OriginalImagePath ?? "";
-            worksheet.Cell(row, 7).Value = doc.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss");
-            worksheet.Cell(row, 8).Value = doc.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss");
+            worksheet.Cell(row, 7).Value = doc.CreatedAt.ToString(DateFormat);
+            worksheet.Cell(row, 8).Value = doc.UpdatedAt.ToString(DateFormat);
         }
 
         worksheet.Columns().AdjustToContents();
@@ -110,8 +111,8 @@ public class ExportService : IExportService
                 ExtractedText = doc.ExtractedText ?? "",
                 ExtractedData = doc.ExtractedData ?? "",
                 ImagePath = doc.OriginalImagePath ?? "",
-                CreatedAt = doc.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                UpdatedAt = doc.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")
+                CreatedAt = doc.CreatedAt.ToString(DateFormat),
+                UpdatedAt = doc.UpdatedAt.ToString(DateFormat)
             });
             await csv.NextRecordAsync();
         }
